@@ -27,7 +27,7 @@ pipeline {
         }
       }
       when {
-        branch '**/master'
+        branch 'master'
       }
       steps {
         sh 'mvn -B clean package -Pintegration'
@@ -52,7 +52,7 @@ pipeline {
         }
       }
       when {
-        branch '**/release-*'
+        branch 'release-*'
       }
       steps {
         sh "mvn -B clean package -Prelease -Dversion='${env.BRANCH_NAME.drop(env.BRANCH_NAME.lastIndexOf('-')+1)}.$BUILD_NUMBER'"
